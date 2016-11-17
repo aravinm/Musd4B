@@ -1,6 +1,7 @@
 package com.nyp.sit.dit.it2107.intentlauncher;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.MediaStore;
@@ -8,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import static android.R.attr.start;
 
@@ -15,6 +17,9 @@ public class MainActivity extends AppCompatActivity {
 
 
     ImageButton btnCamera , btnPlayer, btnDialer , btnSms;
+    ImageView ivThumbnail;
+    final int REQUEST_IMAGE_CAPTURE = 1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,11 +29,14 @@ public class MainActivity extends AppCompatActivity {
         btnDialer = (ImageButton) findViewById(R.id.btnDialer);
         btnSms = (ImageButton) findViewById(R.id.btnSms);
 
+        ivThumbnail = (ImageView) findViewById(R.id.ivThumbnail);
+
         btnCamera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivity(cameraIntent);
+//                startActivity(cameraIntent);
+                startActivityForResult(cameraIntent, REQUEST_IMAGE_CAPTURE);
             }
         });
 
@@ -55,6 +63,16 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+    }
+
+    protected void onActivityResult(int requestCode , int resultCode , Intent data){
+
+        if(requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK){
+            Bundle extras = data.getExtras();
+            Bitmap imageBitmap = (Bitmap) extras.get("data");
+            ivThumbnail.setImageBitmap(imageBitmap);
+        }
     }
 
 }

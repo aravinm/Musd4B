@@ -3,36 +3,52 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tvLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Returned Thumbbail Image:" />
+
+    <ImageView
+        android:id="@+id/ivThumbnail"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_below="@+id/tvLabel"
+        android:layout_marginTop="10dp" />
+
     <ImageButton
         android:id="@+id/btnCamera"
         android:layout_width="75dp"
         android:layout_height="75dp"
-       android:layout_margin="2.5dp"
         android:layout_alignParentBottom="true"
-        android:background="@drawable/icon_camera"/>
+        android:layout_margin="2.5dp"
+        android:background="@drawable/icon_camera" />
+
     <ImageButton
         android:id="@+id/btnPlayer"
         android:layout_width="75dp"
         android:layout_height="75dp"
-        android:layout_margin="2.5dp"
         android:layout_alignParentBottom="true"
+        android:layout_margin="2.5dp"
         android:layout_toRightOf="@id/btnCamera"
-        android:background="@drawable/icon_music"/>
+        android:background="@drawable/icon_music" />
+
     <ImageButton
         android:id="@+id/btnDialer"
         android:layout_width="75dp"
         android:layout_height="75dp"
-        android:layout_margin="2.5dp"
         android:layout_alignParentBottom="true"
+        android:layout_margin="2.5dp"
         android:layout_toRightOf="@id/btnPlayer"
-        android:background="@drawable/icon_phone"/>
+        android:background="@drawable/icon_phone" />
 
     <ImageButton
         android:id="@+id/btnSms"
         android:layout_width="75dp"
         android:layout_height="75dp"
-        android:layout_margin="2.5dp"
         android:layout_alignParentBottom="true"
+        android:layout_margin="2.5dp"
         android:layout_toRightOf="@id/btnDialer"
-        android:background="@drawable/icon_sms"/>
+        android:background="@drawable/icon_sms" />
 </RelativeLayout>
